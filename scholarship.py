@@ -1,7 +1,6 @@
 # prompt for the applicant's name, GPA and disciplinary cases, and print the output
 def main():
-    name = input("What is your name: ").strip()
-    formatted_name = format_applicant(name)
+    name = input("What is your name: ").strip().title()
     try:
         gpa = float(input("What is your GPA: "))
         cases = int(input("How many disciplinary cases do you have: "))
@@ -9,18 +8,12 @@ def main():
         if eligibility is not None:
             message = get_message(eligibility)
             print(
-                f"{formatted_name} has a GPA of {gpa:.2f} with {cases} disciplinary case(s) — {eligibility}. {message}"
+                f"{name} has a GPA of {gpa:.2f} with {cases} disciplinary case(s) — {eligibility}. {message}"
             )
         else:
             return None
     except ValueError:
         pass
-
-
-# return the applicant's name in title case
-def format_applicant(n):
-    n = n.title()
-    return n
 
 
 # return the eligibility of the applicant based on their gpa and disciplinary cases
